@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registration</title>
+    </h:head>
+    <h:body>
+        <h1 style="font-family: sans-serif;font-weight:100;margin-left:460px;font-size:50px"> Registration Page</h1>
+        <hr/>
+        <h:form>
+            <div style="margin-left: 100px">
+                <p>Last Name: <h:message id="message2" for="lastname" styleClass="error"/></p>
+                <h:inputText id="lastname" value="#{registerBean.userRegiste.lastName}"
+                                        required="true" requiredMessage="You must enter a lastname">
+                    <f:validateRegex pattern="^[A-Za-z]+$"/>
+                 <f:ajax execute="lastname" event="blur" render="message2"/>
+                </h:inputText>
+                
+                <p>First Name: <h:message id="message3" for="firstname" styleClass="error"/></p>
+                <h:inputText id="firstname" value="#{registerBean.userRegiste.firstName}"
+                             required="true" requiredMessage="You must enter a firstname">
+                    <f:validateRegex pattern="^[A-Za-z]+$"/>
+                 <f:ajax execute="firstname" event="blur" render="message3"/>
+                </h:inputText>
+                
+                <p>Email: <h:message id="message4" for="email" styleClass="error"/></p>
+                <h:inputText id="email" value="#{registerBean.userRegiste.email}"
+                                        required="true" requiredMessage="You must enter a email">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+                 <f:ajax execute="firstname" event="blur" render="message4"/>
+                </h:inputText>
+                
+                <p>Password: <h:message id="message5" for="password" styleClass="error"/></p>
+                <h:inputSecret id="password" value="#{registerBean.userRegiste.password}"
+                               required="true" requiredMessage="You must enter a password">
+                </h:inputSecret>
+                
+                <p>Type: <h:message id="message6" for="type" styleClass="error"/></p>     
+                <h:selectOneMenu id="type" value="#{registerBean.userRegiste.type}">
+                                <f:selectItem itemValue="C" itemLabel="customer" />
+                                <f:selectItem itemValue="S" itemLabel="salesperson" />
+                           </h:selectOneMenu>
+                
+                <p>Address: <h:message id="message7" for="address" styleClass="error"/></p>
+                <h:inputText id="address" value="#{registerBean.userRegiste.address}"
+                             required="true" requiredMessage="You must enter a address">
+                    <f:ajax execute="address" event="blur" render="message7"/>
+                </h:inputText>
+                
+                <p>Phone Number: <h:message id="message8" for="phonenum" styleClass="error"/></p>
+                <h:inputText id="phonenum" value="#{registerBean.userRegiste.phoneNum}" 
+                                 required="true" requiredMessage="You must enter a lastname">
+                    <f:ajax execute="phonenum" event="blur" render="message8" />
+                    </h:inputText>
+                <br/>
+                <h:commandButton id="submit" value="Regist" style="margin-top: 30px;width: 150px;font-size:20px" action="#{registerBean.addUser()}"/> 
+            </div>
+            </h:form>  
+    </h:body>
+</html>
+

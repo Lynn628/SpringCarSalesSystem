@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/carTableStyle.css"/>
+        <h:outputStylesheet name="css/userMainPageStyle.css"/>  
+    </h:head>
+    <h:body>
+
+        <div id="crumbs">
+            <ul>
+                <li><h:link  outcome="salesPersonMainPage" >Home Page</h:link></li>
+                <li><h:link outcome="salesPersonCarSearchPage">Search Car</h:link></li>
+                <li><h:link outcome="carEditPage">Edit Repertory</h:link></li>
+                <li><h:link outcome="userSearchPage">Search User</h:link></li>
+                <li><h:link outcome="searchRecords">Search Sales Record</h:link></li>
+                <!--<li><h:link outcome="index">Log Out</h:link></li>-->
+            </ul>
+            <div class="fixed"></div>
+        </div> 
+        <h1 style="font-family: sans-serif;font-weight: 100;font-size: 30px">Search Records</h1>
+         <hr/>
+        <h:form>
+            <h:panelGrid style="margin-left: 100px"> 
+                <h:outputLabel value="Car VIN:"> </h:outputLabel>
+                <h:inputText value="#{recordSearchBean.carVIN}"></h:inputText>
+                <h:outputLabel value="User Id:"> </h:outputLabel>
+                <h:inputText value="#{recordSearchBean.userId}"></h:inputText>
+                <h:outputLabel value="Sales Id:"></h:outputLabel>
+                <h:inputText value="#{recordSearchBean.salesId}"></h:inputText>  
+            </h:panelGrid>
+            <h:commandButton value="Search" style="margin-left: 200px" action="#{recordSearchBean.findRecord()}"/> 
+        </h:form>  
+
+        <h:form>
+            <h:dataTable value="#{recordSearchBean.recordFoundList}" var="record" styleClass="carTable" headerClass="headerStyle"
+                         rowClasses="carTableOddRow,carTableEvenRow">
+                <h:column>
+                    <f:facet name="header">Sale Id</f:facet>
+                        #{record.saleId}
+                </h:column>
+                <h:column>
+                    <f:facet name ="header">User Id</f:facet>
+                        #{record.customer.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Salesperson Id</f:facet>
+                        #{record.salesPerson.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Car VIN</f:facet>
+                        #{record.car.VIN}
+                </h:column>
+            </h:dataTable>
+
+        </h:form>
+    </h:body>
+</html>
+

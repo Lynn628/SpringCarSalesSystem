@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+     <h:outputStylesheet name="css/carTableStyle.css"/>
+        <h:outputStylesheet name="css/userMainPageStyle.css"/>   
+    </h:head>
+    <h:body>
+      <h:form>
+     <div id="crumbs" style="margin-left:60px">
+ <ul>
+    <li><h:link outcome="salesPersonMainPage" >Home Page</h:link></li>
+    <li><h:link outcome="salesPersonCarSearchPage">Search Car</h:link></li>
+    <li><h:link outcome="carEditPage">Edit Repertory</h:link></li>
+    <li><h:link outcome="userSearchPage">Search User</h:link></li>
+     <li><h:link outcome="searchRecords">Search Sales Record</h:link></li>
+ </ul>
+    <div class="fixed"></div>
+   </div>
+    </h:form>
+        <h1>Find Your Dream Car</h1>
+        <hr/>
+        <div style="margin-left:100px">
+        <h:form>
+            <h:panelGrid columns="2" style="width:30%;height:120px" cellspacing="1">
+                <h:outputLabel value="Manufacturer:" />
+                <h:selectOneMenu id="manufacurerChoice" style="width:100px" required="true" value="#{carSearchBean.manufacturer}">
+                     <f:selectItem itemValue="MAZDA"
+                                   itemLabel="MAZDA"/>
+                    <f:selectItem itemValue="BMW" 
+                                   itemLabel="BMW"/>
+                    <f:selectItem itemValue="VM"
+                                   itemLabel="VM"/>        
+               </h:selectOneMenu>
+                 <h:outputLabel value="Model Name:" />
+                 <h:inputText value="#{carSearchBean.modelName}"/>
+                 <h:outputLabel value="Model Number:" />
+                 <h:inputText value="#{carSearchBean.modelNo}"/>
+                 <h:outputLabel value="Type:" />
+               <h:selectOneMenu id="typeChoice" required="true" value="#{carSearchBean.type}">
+<!--                    <f:selectItem 
+                                   itemLabel="All"/>-->
+                    <f:selectItem itemValue="Sedan" 
+                                   itemLabel="Sedan"/>
+                    <f:selectItem itemValue="4 wheel drive"
+                                   itemLabel="4 wheel drive"/>
+                    <f:selectItem itemValue="Truck"
+                                   itemLabel="Truck"/>
+               </h:selectOneMenu>
+            </h:panelGrid>
+         
+            <h:commandButton action = "#{carSearchBean.salesPersonRetrieveCar()}"  value="Search" style="width: 100px;height: 30px;margin-left:20px;margin-top: 10px"/> 
+          </h:form> 
+        </div>
+        <br/>
+        <br/>
+  <h:form>
+        <h:dataTable value="#{carSearchBean.carList}"  styleClass="carTable" headerClass="headerStyle"
+                     rowClasses="carTableOddRow,carTableEvenRow" var ="car" >
+           <h:column>
+                <f:facet name ="header">VIN</f:facet>
+                 #{car.VIN}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Model Name</f:facet>
+                #{car.modelName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Model Number</f:facet>
+                #{car.modelNo}
+            </h:column>
+           
+                <h:column>
+                <f:facet name="header">Manufacturer</f:facet>
+                #{car.manufacturer}
+            </h:column>
+                <h:column>
+                    <h:commandButton value="Details" action="carDetialPageForSalesPerson" >
+                 <f:setPropertyActionListener target="#{carSearchBean.carChecked}" value="#{car}"/>
+                <f:setPropertyActionListener target="#{carDetailBean.carChecked}" value="#{car}"/>
+                    </h:commandButton>
+            </h:column>
+        </h:dataTable>
+        </h:form>
+    </h:body>
+   
+</html>
+

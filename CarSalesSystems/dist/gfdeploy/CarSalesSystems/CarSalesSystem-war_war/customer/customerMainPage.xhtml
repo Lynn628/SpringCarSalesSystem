@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Customer Main Page</title>
+        <h:outputStylesheet name="css/userMainPageStyle.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+ <div id="crumbs">
+ <ul>
+    <li><h:link  outcome="customerMainPage" >Home Page</h:link></li>
+    <li><h:link outcome="carSearchPage">Search Car</h:link></li> 
+ </ul>
+<div class="fixed"></div>
+</div>
+
+<div style="float: left">
+            <h:panelGrid columns="3" style="margin-left: 45px;margin-top: 30px" >
+        <h:outputLabel value="Hello: " style="font-size:30px;font-weight:100;font-family: sans-serif"/>
+        <h:outputLabel value="#{mainPageBean.userIdentity.firstName}" style="font-size:30px;font-weight:100;font-family: sans-serif"/>
+         <h:outputLabel value=". Enjoy your service here. " style="font-size:30px;font-weight:100;font-family: sans-serif"/>
+            </h:panelGrid>    
+        
+            <h:outputLabel  style="font-size:20px;font-weight:100;font-family: sans-serif;margin-top: 200px;margin-left: 30px"
+                            value="Please choose one server to serve you~~"/>
+            <h:selectOneMenu style="width:100px" id="typeChoice" required="true" value="#{mainPageBean.serverNum}">
+<!--                    <f:selectItem 
+                                   itemLabel="All"/>-->
+                    <f:selectItem itemValue="1" 
+                                   itemLabel="No.1"/>
+                    <f:selectItem itemValue="2"
+                                   itemLabel="No.2"/>
+                    <f:selectItem itemValue="3"
+                                   itemLabel="No.3"/>
+               </h:selectOneMenu>
+        </div>
+         <div style="margin-top: 30px;float: start">
+            <img src="http://localhost:8080/CarSalesSystem-war/resources/pictures/car1.jpg" style="margin-top:20px;"/>
+         </div>
+    </h:form>
+    </h:body>
+</html>
+

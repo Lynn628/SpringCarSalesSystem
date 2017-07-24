@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+       <h:outputStylesheet name="css/carTableStyle.css"/>
+    </h:head>
+    <h:body>
+        <h1>Order Information</h1>
+        <h:form>
+            <h:dataTable  value="#{carDetailBean.saleList}" styleClass="carTable" headerClass="headerStyle"
+                     rowClasses="carTableOddRow,carTableEvenRow" var="sale">  
+              <h:column>
+                <f:facet name ="header">Sale ID</f:facet>
+             #{sale.saleId}
+            </h:column>
+        <h:column>
+                <f:facet name ="header">User Name</f:facet>
+             #{sale.customer.firstName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Car's VIN</f:facet>
+           #{sale.car.VIN}            
+            </h:column>
+
+              <h:column>
+                <f:facet name="header">Sales Person</f:facet>
+          #{sale.salesPerson.firstName}
+            </h:column>    
+              <h:column>
+                <f:facet name="header">Sales Status</f:facet>
+             #{sale.salesStatus}
+            </h:column>          
+       
+        </h:dataTable>
+    
+            <h:commandButton  style="margin-left: 200px;margin-top: 100px;width: 100px;font-size: 20px" value="Buy More" action="#{carSearchBean.returnToSearchPage()}"/>
+        </h:form>
+    </h:body>
+</html>
+

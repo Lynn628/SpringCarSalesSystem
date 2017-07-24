@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Car Detail</title>
+    </h:head>
+    <h:body>
+        <h1 style="font-family: sans-serif;font-weight:100;margin-left:100px;font-size:50px">More Information</h1>
+        <hr/>
+            <h:form>
+        <div style="margin-left: 50px;border: solid;border-color:seagreen;width:35%;margin-top: 20px">
+            <h:panelGrid columns="2"  cellspacing="2" >
+                <h:outputLabel>VIN:</h:outputLabel>
+                <h:outputLabel value="#{carDetailBean.carChecked.VIN}"/>
+                <h:outputLabel>Model Name:</h:outputLabel>
+                <h:outputLabel value="#{carDetailBean.carChecked.modelName}"/>
+                 <h:outputLabel>Model Number:</h:outputLabel>
+                <h:outputLabel value="#{carDetailBean.carChecked.modelNo}"/>
+                 <h:outputLabel>Manufacturer:</h:outputLabel>
+                 <h:outputLabel value="#{carDetailBean.carChecked.manufacturer}"/>
+                 <h:outputLabel>Type:</h:outputLabel>
+                 <h:outputLabel value="#{carDetailBean.carChecked.type}"/>
+                 <h:outputLabel>Proudced Date:</h:outputLabel>
+                 <h:outputLabel value="#{carDetailBean.carChecked.producedDate.toString()}"/>
+                 <h:outputLabel>Description:</h:outputLabel>
+                 <h:outputLabel value="#{carDetailBean.carChecked.description}"/>
+            </h:panelGrid> 
+        </div>
+        <div style="float: left">
+        <img src="http://localhost:8080/CarSalesSystem-war/#{carDetailBean.carChecked.thumbnail}" style="width:500px;height:300px;margin-left:60px;margin-top:20px"/>
+        </div>
+                <h:commandButton value="Buy It Now" action="#{carDetailBean.buyCarAction()}" style="width: 150px;font-size:20px"/>
+       </h:form>
+    </h:body>
+</html>
+

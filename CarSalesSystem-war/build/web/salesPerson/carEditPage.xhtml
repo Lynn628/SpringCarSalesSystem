@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Edit Repository Page</title>
+        <h:outputStylesheet name="css/carTableStyle.css"/>
+        <h:outputStylesheet name="css/userMainPageStyle.css"/>   
+    </h:head>
+    <h:body>
+          <h:form>
+     <div id="crumbs" style="margin-left:60px">
+ <ul>
+     <li><h:link outcome="salesPersonMainPage">Home Page</h:link></li>
+     <li><h:link outcome="salesPersonCarSearchPage">Search Car</h:link></li>
+    <li><h:link outcome="carEditPage">Edit Repertory</h:link></li>
+    <li><h:link outcome="userSearchPage">Search User</h:link></li>
+     <li><h:link outcome="searchRecords">Search Sales Record</h:link></li>
+ </ul>
+    <div class="fixed"></div>
+   </div>
+    </h:form>
+        <h1 style="font-family: sans-serif;font-weight:100;font-size:40px;margin-left:30px">Car In Repository</h1>
+     <hr/>
+        <h:form>
+        <h:dataTable id="carTable" value="#{carEditBean.getAllCar()}"  styleClass="carTable" headerClass="headerStyle"
+                     rowClasses="carTableOddRow,carTableEvenRow" var ="car" >
+            
+           <h:column>
+                <f:facet name ="header" >VIN</f:facet>
+                 #{car.VIN}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Manufacturer</f:facet>
+                #{car.manufacturer}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Model Name</f:facet>
+                #{car.modelName}
+            </h:column>
+               <h:column>
+                <f:facet name="header">Model Number</f:facet>
+                #{car.modelNo}
+            </h:column>
+               <h:column>
+                <f:facet name="header">Type</f:facet>
+                #{car.type}
+            </h:column>
+               <h:column>
+                <f:facet name="header">Statutes</f:facet>
+                #{car.carStatus}
+            </h:column>
+<!--             <h:column>
+                <f:facet name="header">Date Produced</f:facet>
+                #{car.producedDate.toString()}
+            </h:column>-->
+            <h:column>
+                <f:facet name="header">Image Path</f:facet>
+                #{car.thumbnail}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Description</f:facet>
+                #{car.description}
+            </h:column>
+            <h:column>
+                <h:commandButton value="Edit" action="#{carEditBean.editFunction()}" >
+                    <f:setPropertyActionListener target="#{carEditBean.targetCar}" value="#{car}"/>
+                </h:commandButton>
+            </h:column>
+             <h:column>
+                 <h:commandButton value="Delete" action="#{carEditBean.deleteCar}" >
+                    <f:setPropertyActionListener target="#{carEditBean.targetCar}" value="#{car}"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+        </h:form>
+       
+         
+        <div style="margin-left: 100px;margin-top: 50px">
+            
+            <h:form>
+            <h:panelGrid columns="2" border="0"  width="60%" cellspacing="0" >
+                <h:outputLabel>VIN:</h:outputLabel>
+                <h:inputText value="#{carEditBean.car.VIN}" style="width:200px">
+                </h:inputText>
+                  <h:outputLabel>Model Name:</h:outputLabel>
+                  <h:inputText value="#{carEditBean.car.modelName}" style="width:200px"></h:inputText>
+                  <h:outputLabel>Model No:</h:outputLabel>
+                  <h:inputText value="#{carEditBean.car.modelNo}" style="width:200px"></h:inputText>
+                  <h:outputLabel>Manufacturer:</h:outputLabel>
+                  <h:inputText value="#{carEditBean.car.manufacturer}" style="width:200px"></h:inputText>
+                  <h:outputLabel>Type:</h:outputLabel>
+                  <h:inputText value="#{carEditBean.car.type}" style="width:200px"></h:inputText>
+                 <h:outputLabel>Statues:</h:outputLabel>
+                 <h:inputText value="#{carEditBean.car.carStatus}" style="width:200px"></h:inputText>
+                  <h:outputLabel>Image Path:</h:outputLabel>
+                  <h:inputText value="#{carEditBean.car.thumbnail}" style="width:200px"></h:inputText>
+                  <h:outputLabel>Description:</h:outputLabel>
+                  <h:inputTextarea value="#{carEditBean.car.description}" style="width:250px;height: 150px"></h:inputTextarea>
+        <h:commandButton value="Add" action="#{carEditBean.addCar()}"
+                         style="width:100px;height:30px;font-size:20px;font-weight: 100"
+                         onclick="alter('Sucess')"/>
+        <h:commandButton value="Update" action="#{carEditBean.updateCar()}" 
+                         style="width:100px;height:30px;font-size:20px;font-weight: 100;margin-left: 40px"
+                          onclick="alter('Sucess')"/>
+            </h:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

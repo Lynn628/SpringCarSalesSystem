@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+        <h:outputStylesheet name="css/entrancePageStyle.css"/>
+        <!--<h:outputStylesheet name="css/loginLayout.css"/>-->
+        <title>Car sales system</title>
+    </h:head>
+    <h:body>
+        <h1>Welcome to Spring Car Sales System</h1>
+<!--        <h:graphicImage url="css\car1.jpg"/>-->
+        <!--<h:button value="Login" outcome="carEditPage.xhtml" id="loginButton"/>-->
+        <span style="letter-spacing: 40px"></span>
+       
+      <span style="letter-spacing: 60px"></span>
+      <div style="margin-left: 450px"> 
+          <h2 style="color: #ffffff">Start your journey now.</h2>
+        <h:form >
+        <h:panelGrid border="0" width="10%" columns="2"   cellspacing="1" style="margin-left:70px">
+            <h:outputLabel style="font-size: 20px;color: #ffffff" >Email:</h:outputLabel>
+            <h:inputText id="email" value="#{loginManagedBean.email}" />
+            <h:outputLabel style="font-size: 20px;color: #ffffff" >Password:</h:outputLabel>
+            <h:inputSecret id="password" value="#{loginManagedBean.password}" style="border-color: #ffffff" /> 
+         
+            <h:commandButton  value="Login" action="#{loginManagedBean.login()}" style="width:100px;height: 30px;margin-top: 20px"/>
+            <h:button value="Registration" outcome="userRegisterPage.xhtml" style="width:100px;height: 30px;margin-left:20px;margin-top: 20px"/>
+            <!--<h:commandButton value="Back" action="index"/>-->
+        </h:panelGrid>
+        </h:form>
+      </div>
+     <footer> 
+         <p>@ Created by Lynn.All rights reserved. </p>
+     </footer>
+    </h:body>
+</html>
+
